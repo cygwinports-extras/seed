@@ -1,0 +1,15 @@
+--- origsrc/seed-2.27.92/doc/modules/Makefile.am	2009-09-03 15:19:06.000000000 -0500
++++ src/seed-2.27.92/doc/modules/Makefile.am	2009-09-08 12:14:00.194277800 -0500
+@@ -4,6 +4,12 @@ EXTRA_DIST=make-functions.js book.xml ve
+ if ENABLE_GTK_DOC
+ html/index.html: version.xml book.xml sqlite/sqlite.xml sqlite/sqlite-funcs.xml readline/readline.xml readline/readline-funcs.xml make-functions.js gtkbuilder/gtkbuilder-funcs.xml gtkbuilder/gtkbuilder.xml sandbox/sandbox.xml sandbox/sandbox-funcs.xml
+ 	mkdir -p html;
++	if test ! -e book.xml; then \
++		$(LN_S) $(srcdir)/book.xml book.xml; \
++		for m in sqlite readline gtkbuilder sandbox; do \
++			$(LN_S) -f $(srcdir)/$$m/[a-z]* $$m/; \
++		done; \
++	fi		
+ 	gtkdoc-mkhtml "Seed" book.xml;
+ 	mv *.html *.css *.png *.sgml *.devhelp* html
+ 

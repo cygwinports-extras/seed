@@ -1,0 +1,280 @@
+--- origsrc/seed-2.27.92/libseed/seed-importer.c	2009-09-03 15:19:06.000000000 -0500
++++ src/seed-2.27.92/libseed/seed-importer.c	2009-09-08 01:46:29.731630800 -0500
+@@ -728,7 +728,7 @@ seed_importer_search (JSContextRef ctx, 
+   GSList *path, *walk;
+   JSObjectRef ret;
+   gchar *prop_as_lib =
+-    g_strconcat ("libseed_", prop, ".", G_MODULE_SUFFIX, NULL);
++    g_module_build_path(NULL, g_strconcat ("seed_", prop, NULL));
+   gsize i, mentrylen;
+ 
+   path = seed_importer_get_search_path (ctx, exception);
+--- origsrc/seed-2.27.92/modules/cairo/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/cairo/Makefile.am	2009-09-08 10:11:44.085784400 -0500
+@@ -32,10 +32,16 @@ libseed_cairo_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_cairo_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+ 	$(GDK_LDFLAGS) \
+-	$(CAIRO_LDFLAGS) \
++	$(CAIRO_LDFLAGS)
++
++libseed_cairo_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(GDK_LIBS) \
++	$(CAIRO_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/canvas/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/canvas/Makefile.am	2009-09-08 10:11:53.310925400 -0500
+@@ -17,9 +17,14 @@ libseed_canvas_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_canvas_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+-	$(CAIRO_LDFLAGS) \
++	$(CAIRO_LDFLAGS)
++
++libseed_canvas_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(CAIRO_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/dbus/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/dbus/Makefile.am	2009-09-08 10:02:28.635047200 -0500
+@@ -35,12 +35,15 @@ libseed_dbusnative_la_CFLAGS = \
+ 
+ 
+ libseed_dbusnative_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+-	-L/lib \
+-	-ldbus-1 \
+-	$(DBUS_LDFLAGS) \
+-	-ldbus-glib-1 \
++	$(DBUSGLIB_LDFLAGS)
++
++
++libseed_dbusnative_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(DBUSGLIB_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ 
+--- origsrc/seed-2.27.92/modules/example/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/example/Makefile.am	2009-09-08 10:02:59.164263700 -0500
+@@ -15,8 +15,12 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_example_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_example_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/ffi/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/ffi/Makefile.am	2009-09-08 10:04:20.768010600 -0500
+@@ -23,8 +23,11 @@ libseed_ffi_la_CFLAGS = \
+ 	$(FFI_CFLAGS)
+ 
+ libseed_ffi_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_ffi_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
+ 	$(SEED_PROFILE_LIBS) \
+ 	$(FFI_LDFLAGS)
+ 
+--- origsrc/seed-2.27.92/modules/gettext/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/gettext/Makefile.am	2009-09-08 10:05:19.448657200 -0500
+@@ -15,8 +15,12 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_gettext_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_gettext_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(INTLLIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/gtkbuilder/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/gtkbuilder/Makefile.am	2009-09-08 10:05:52.602913800 -0500
+@@ -17,9 +17,14 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_gtkbuilder_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GTK_LDFLAGS) \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_gtkbuilder_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GTK_LIBS) \
++	$(GOBJECT_INTROSPECTION_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/libxml/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/libxml/Makefile.am	2009-09-08 10:06:45.163716900 -0500
+@@ -18,10 +18,15 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_libxml_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(LIBXML_LDFLAGS) \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+-	$(SEED_PROFILE_LIBS)
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_libxml_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(LIBXML_LIBS) \
++	$(SEED_PROFILE_LIBS)	
+ 
+ extensionsdir=$(datadir)/seed/extensions
+ extensions_DATA=xml.js
+--- origsrc/seed-2.27.92/modules/mpfr/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/mpfr/Makefile.am	2009-09-08 10:07:35.805740700 -0500
+@@ -18,11 +18,14 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_mpfr_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+-	$(SEED_PROFILE_LIBS)
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
+ 
+-libseed_mpfr_la_LIBADD = -lmpfr -lgmp
++libseed_mpfr_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	-lmpfr -lgmp \
++	$(SEED_PROFILE_LIBS)
+ 
+ EXTRA_DIST = seed-mpfr.h
+ 
+--- origsrc/seed-2.27.92/modules/multiprocessing/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/multiprocessing/Makefile.am	2009-09-08 10:08:02.918655000 -0500
+@@ -17,8 +17,12 @@ libseed_multiprocessing_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_multiprocessing_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_multiprocessing_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/os/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/os/Makefile.am	2009-09-08 10:08:36.391666500 -0500
+@@ -15,10 +15,14 @@ libseed_os_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_os_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GOBJECT_INTROSPECTION_LDFLAGS) \
++	$(SEED_DEBUG_LDFLAGS)
++
++libseed_os_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
+ 	-lutil \
+-	$(SEED_DEBUG_LDFLAGS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/readline/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/readline/Makefile.am	2009-09-08 10:09:28.546213400 -0500
+@@ -16,10 +16,14 @@ libseed_readline_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_readline_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
++
++libseed_readline_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
+ 	-lreadline \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+ 	$(FFI_LDFLAGS) \
+-	$(SEED_PROFILE_LIBS) 
++	$(SEED_PROFILE_LIBS)
+ 
+ endif
+--- origsrc/seed-2.27.92/modules/sandbox/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/sandbox/Makefile.am	2009-09-08 10:10:05.859283500 -0500
+@@ -14,10 +14,13 @@ AM_CPPFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_sandbox_la_LDFLAGS = \
+-	-module -avoid-version \
+-	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+-	$(SEED_PROFILE_LIBS)
++	-module -avoid-version -no-undefined \
++	$(GOBJECT_INTROSPECTION_LDFLAGS)
+ 
++libseed_sandbox_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(SEED_PROFILE_LIBS)
+ 
+ 
+ 
+--- origsrc/seed-2.27.92/modules/sqlite/Makefile.am	2009-09-07 00:40:22.000000000 -0500
++++ src/seed-2.27.92/modules/sqlite/Makefile.am	2009-09-08 10:10:59.908859400 -0500
+@@ -17,10 +17,15 @@ libseed_sqlite_la_CFLAGS = \
+ 	$(SEED_PROFILE_CFLAGS)
+ 
+ libseed_sqlite_la_LDFLAGS = \
+-	-module -avoid-version \
++	-module -avoid-version -no-undefined \
+ 	$(GOBJECT_INTROSPECTION_LDFLAGS) \
+ 	$(SQLITE_LDFLAGS) \
+-	$(SEED_DEBUG_LDFLAGS) \
++	$(SEED_DEBUG_LDFLAGS)
++
++libseed_sqlite_la_LIBADD = \
++	$(top_builddir)/libseed/libseed.la \
++	$(GOBJECT_INTROSPECTION_LIBS) \
++	$(SQLITE_LIBS) \
+ 	$(SEED_PROFILE_LIBS)
+ 
+ endif

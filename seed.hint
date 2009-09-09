@@ -1,0 +1,9 @@
+category: Gnome Interpreters
+requires: libgcc1 libglib2.0_0 libseed0
+sdesc: "GNOME JavaScript interpreter"
+ldesc: "Seed is a library and interpreter, dynamically bridging (through 
+GObject-Introspection) the WebKit JavaScriptCore engine with the GObject 
+type system. In a more concrete sense, Seed enables you to immediately 
+write applications around a significant portion of the GNOME platform, 
+and easily embed JavaScript as a scripting language in your GObject 
+library."

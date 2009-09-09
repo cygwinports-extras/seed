@@ -1,0 +1,18 @@
+inherit gnome2
+
+DESCRIPTION="GNOME JavaScript interpreter"
+HOMEPAGE="http://live.gnome.org/Seed"
+
+PATCH_URI="
+	2.27.92-no-undefined.patch
+	2.27.92-cygwin-compile.patch
+	2.27.92-doc-vpath.patch
+	2.27.92-examples.patch
+"
+
+PKG_NAMES="seed libseed0 libseed-devel"
+seed_CONTENTS="usr/bin/seed.exe usr/share/doc/ usr/share/man/"
+libseed0_CONTENTS="usr/bin/cygseed-0.dll usr/lib/seed/ usr/share/seed/"
+libseed_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/gtk-doc/"
+
+DIFF_EXCLUDES="seed-path.h seed.pc"
