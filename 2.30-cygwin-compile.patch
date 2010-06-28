@@ -1,0 +1,29 @@
+--- origsrc/seed-2.30.0/modules/gettext/seed-gettext.c	2010-03-28 22:15:49.000000000 -0500
++++ src/seed-2.30.0/modules/gettext/seed-gettext.c	2010-06-28 03:30:48.668976800 -0500
+@@ -313,12 +313,14 @@ seed_module_init(SeedEngine *local_eng)
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_MONETARY);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_MESSAGES);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_ALL);
++#if 0
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_PAPER);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_NAME);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_ADDRESS);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_TELEPHONE);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_MEASUREMENT);
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_IDENTIFICATION);
++#endif
+ 	DEFINE_ENUM_MEMBER(ns_ref, LC_CTYPE);
+ 
+ 	return ns_ref;
+--- origsrc/seed-2.30.0/modules/os/seed-os.c	2010-03-28 22:15:49.000000000 -0500
++++ src/seed-2.30.0/modules/os/seed-os.c	2010-06-28 03:31:37.741783600 -0500
+@@ -1109,7 +1109,9 @@ seed_module_init(SeedEngine * eng)
+   //  OS_DEFINE_QUICK_ENUM (O_SHLOCK);
+   //  OS_DEFINE_QUICK_ENUM (O_EXLOCK);
+ 
++#if defined (O_ASYNC)
+   OS_DEFINE_QUICK_ENUM (O_ASYNC);
++#endif
+ #if defined (O_DIRECT)
+   OS_DEFINE_QUICK_ENUM (O_DIRECT);
+ #endif

@@ -5,9 +5,8 @@ HOMEPAGE="http://live.gnome.org/Seed"
 
 PATCH_URI="
 	2.27.92-no-undefined.patch
-	2.27.92-cygwin-compile.patch
+	2.30-cygwin-compile.patch
 	2.27.92-doc-vpath.patch
-	2.27.92-examples.patch
 "
 
 PKG_NAMES="seed libseed0 libseed-devel"
