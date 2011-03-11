@@ -1,15 +1,15 @@
---- origsrc/seed-2.31.91/libseed/Makefile.am	2010-08-30 16:37:38.000000000 -0500
-+++ src/seed-2.31.91/libseed/Makefile.am	2010-12-14 23:19:46.612929800 -0600
-@@ -36,6 +36,7 @@ libseed_la_CFLAGS = \
+--- origsrc/seed-2.91.90/libseed/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/libseed/Makefile.am	2011-03-10 04:30:05.881990500 -0600
+@@ -36,6 +36,7 @@ libseed@SEED_GTK_VERSION@_la_CFLAGS = \
  	-DGOBJECT_INTROSPECTION_VERSION=$(GOBJECT_INTROSPECTION_VERSION)
  
- libseed_la_LDFLAGS = \
+ libseed@SEED_GTK_VERSION@_la_LDFLAGS = \
 +	-no-undefined \
  	$(FFI_LDFLAGS)
  
- libseed_la_LIBADD = \
---- origsrc/seed-2.31.91/modules/DynamicObject/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/DynamicObject/Makefile.am	2010-12-15 00:01:28.987045700 -0600
+ libseed@SEED_GTK_VERSION@_la_LIBADD = \
+--- origsrc/seed-2.91.90/modules/DynamicObject/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/DynamicObject/Makefile.am	2011-03-10 04:29:18.613908100 -0600
 @@ -15,10 +15,14 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -26,8 +26,8 @@
  endif
  
  
---- origsrc/seed-2.31.91/modules/cairo/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/cairo/Makefile.am	2010-12-14 23:18:04.760726800 -0600
+--- origsrc/seed-2.91.90/modules/cairo/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/cairo/Makefile.am	2011-03-10 04:29:18.629508200 -0600
 @@ -32,7 +32,7 @@ libseed_cairo_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -37,8 +37,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(GDK_LDFLAGS) \
  	$(CAIRO_LDFLAGS)
---- origsrc/seed-2.31.91/modules/canvas/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/canvas/Makefile.am	2010-12-14 23:18:16.565402000 -0600
+--- origsrc/seed-2.91.90/modules/canvas/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/canvas/Makefile.am	2011-03-10 04:29:18.629508200 -0600
 @@ -17,7 +17,7 @@ libseed_canvas_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -48,8 +48,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(CAIRO_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/dbus/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/dbus/Makefile.am	2010-12-14 23:18:22.193723900 -0600
+--- origsrc/seed-2.91.90/modules/dbus/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/dbus/Makefile.am	2011-03-10 04:29:18.629508200 -0600
 @@ -35,7 +35,7 @@ libseed_dbusnative_la_CFLAGS = \
  
  
@@ -59,8 +59,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(DBUS_LDFLAGS) \
  	-L/lib
---- origsrc/seed-2.31.91/modules/example/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/example/Makefile.am	2010-12-14 23:18:33.147350400 -0600
+--- origsrc/seed-2.91.90/modules/example/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/example/Makefile.am	2011-03-10 04:29:18.629508200 -0600
 @@ -15,7 +15,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -70,8 +70,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
  libseed_example_la_LIBADD = \
---- origsrc/seed-2.31.91/modules/ffi/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/ffi/Makefile.am	2010-12-14 23:18:36.996967200 -0600
+--- origsrc/seed-2.91.90/modules/ffi/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/ffi/Makefile.am	2011-03-10 04:29:18.645108200 -0600
 @@ -23,7 +23,7 @@ libseed_ffi_la_CFLAGS = \
  	$(FFI_CFLAGS)
  
@@ -81,8 +81,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(FFI_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/gettext/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/gettext/Makefile.am	2010-12-14 23:18:42.498675000 -0600
+--- origsrc/seed-2.91.90/modules/gettext/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/gettext/Makefile.am	2011-03-10 04:29:18.645108200 -0600
 @@ -15,7 +15,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -92,8 +92,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
  libseed_gettext_la_LIBADD = \
---- origsrc/seed-2.31.91/modules/gtkbuilder/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/gtkbuilder/Makefile.am	2010-12-14 23:18:46.235888800 -0600
+--- origsrc/seed-2.91.90/modules/gtkbuilder/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/gtkbuilder/Makefile.am	2011-03-10 04:29:18.645108200 -0600
 @@ -17,7 +17,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -103,8 +103,8 @@
  	$(GTK_LDFLAGS) \
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/libxml/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/libxml/Makefile.am	2010-12-14 23:18:50.426128400 -0600
+--- origsrc/seed-2.91.90/modules/libxml/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/libxml/Makefile.am	2011-03-10 04:29:18.660708200 -0600
 @@ -18,7 +18,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -114,8 +114,8 @@
  	$(LIBXML_LDFLAGS) \
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/mpfr/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/mpfr/Makefile.am	2010-12-14 23:18:53.946329800 -0600
+--- origsrc/seed-2.91.90/modules/mpfr/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/mpfr/Makefile.am	2011-03-10 04:29:18.660708200 -0600
 @@ -18,7 +18,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -125,8 +125,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
  libseed_mpfr_la_LIBADD = -lmpfr -lgmp \
---- origsrc/seed-2.31.91/modules/multiprocessing/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/multiprocessing/Makefile.am	2010-12-14 23:18:57.742546900 -0600
+--- origsrc/seed-2.91.90/modules/multiprocessing/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/multiprocessing/Makefile.am	2011-03-10 04:29:18.660708200 -0600
 @@ -17,7 +17,7 @@ libseed_multiprocessing_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -136,8 +136,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
  libseed_multiprocessing_la_LIBADD = \
---- origsrc/seed-2.31.91/modules/os/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/os/Makefile.am	2010-12-14 23:19:01.259748100 -0600
+--- origsrc/seed-2.91.90/modules/os/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/os/Makefile.am	2011-03-10 04:29:18.676308200 -0600
 @@ -15,7 +15,7 @@ libseed_os_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -147,8 +147,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(SEED_DEBUG_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/readline/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/readline/Makefile.am	2010-12-14 23:19:04.186915500 -0600
+--- origsrc/seed-2.91.90/modules/readline/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/readline/Makefile.am	2011-03-10 04:29:18.676308200 -0600
 @@ -16,7 +16,7 @@ libseed_readline_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -158,8 +158,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS) \
  	$(FFI_LDFLAGS)
  
---- origsrc/seed-2.31.91/modules/sandbox/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/sandbox/Makefile.am	2010-12-14 23:19:07.854125300 -0600
+--- origsrc/seed-2.91.90/modules/sandbox/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/sandbox/Makefile.am	2011-03-10 04:29:18.676308200 -0600
 @@ -14,7 +14,7 @@ AM_CPPFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  
@@ -169,8 +169,8 @@
  	$(GOBJECT_INTROSPECTION_LDFLAGS)
  
  libseed_sandbox_la_LIBADD = \
---- origsrc/seed-2.31.91/modules/sqlite/Makefile.am	2010-08-30 16:37:39.000000000 -0500
-+++ src/seed-2.31.91/modules/sqlite/Makefile.am	2010-12-14 23:19:11.043105100 -0600
+--- origsrc/seed-2.91.90/modules/sqlite/Makefile.am	2011-02-22 16:44:01.000000000 -0600
++++ src/seed-2.91.90/modules/sqlite/Makefile.am	2011-03-10 04:29:18.691908300 -0600
 @@ -17,7 +17,7 @@ libseed_sqlite_la_CFLAGS = \
  	$(SEED_PROFILE_CFLAGS)
  

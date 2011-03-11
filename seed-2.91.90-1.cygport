@@ -4,7 +4,7 @@ DESCRIPTION="GNOME JavaScript interpreter"
 HOMEPAGE="http://live.gnome.org/Seed"
 
 PATCH_URI="
-	2.31.91-no-undefined.patch
+	2.91.90-no-undefined.patch
 	2.30-cygwin-compile.patch
 	2.27.92-doc-vpath.patch
 	2.31.91-g_module_build_path.patch
