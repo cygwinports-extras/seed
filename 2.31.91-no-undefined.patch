@@ -8,17 +8,6 @@
  	$(FFI_LDFLAGS)
  
  libseed_la_LIBADD = \
---- origsrc/seed-2.31.91/libseed/seed-importer.c	2010-08-30 16:37:38.000000000 -0500
-+++ src/seed-2.31.91/libseed/seed-importer.c	2010-12-14 23:21:09.979879400 -0600
-@@ -591,7 +591,7 @@ seed_importer_handle_native_module (JSCo
-   GModule *module;
-   JSObjectRef module_obj;
-   SeedModuleInitCallback init;
--  gchar *file_path = g_strconcat (dir, "/libseed_", prop, ".", G_MODULE_SUFFIX, NULL);
-+  gchar *file_path = g_module_build_path(dir, g_strconcat ("seed_", prop, NULL));
- 
-   SEED_NOTE (IMPORTER, "Trying native module: %s", file_path);
- 
 --- origsrc/seed-2.31.91/modules/DynamicObject/Makefile.am	2010-08-30 16:37:39.000000000 -0500
 +++ src/seed-2.31.91/modules/DynamicObject/Makefile.am	2010-12-15 00:01:28.987045700 -0600
 @@ -15,10 +15,14 @@ AM_CPPFLAGS = \
