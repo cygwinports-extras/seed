@@ -10,11 +10,9 @@ PATCH_URI="
 	2.31.91-g_module_build_path.patch
 "
 
-PKG_NAMES="seed libseed0 libseed-devel"
+PKG_NAMES="seed libseed-gtk3_0 libseed-devel"
 seed_CONTENTS="usr/bin/seed.exe usr/share/doc/ usr/share/man/"
-libseed0_CONTENTS="usr/bin/cygseed-0.dll usr/lib/seed/ usr/share/seed/"
+libseed_gtk3_0_CONTENTS="usr/bin/cygseed-gtk3-0.dll usr/lib/seed-gtk3/ usr/share/seed-gtk3/"
 libseed_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/ usr/share/gtk-doc/"
 
 DIFF_EXCLUDES="seed-path.h seed.pc"
-
-CYGCONF_ARGS="--with-webkit=1.0"

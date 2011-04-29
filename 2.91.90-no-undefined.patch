@@ -20,7 +20,7 @@
  	$(SEED_PROFILE_LIBS)
  
 +libseed_DynamicObject_la_LIBADD = \
-+	$(top_builddir)/libseed/libseed.la \
++	$(top_builddir)/libseed/libseed@SEED_GTK_VERSION@.la \
 +	$(GOBJECT_INTROSPECTION_LIBS)
 +
  endif

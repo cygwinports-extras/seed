@@ -1,5 +1,5 @@
 category: Gnome Interpreters
-requires: libgcc1 libglib2.0_0 libseed0
+requires: libgcc1 libglib2.0_0 libseed-gtk3_0
 sdesc: "GNOME JavaScript interpreter"
 ldesc: "Seed is a library and interpreter, dynamically bridging (through 
 GObject-Introspection) the WebKit JavaScriptCore engine with the GObject 
