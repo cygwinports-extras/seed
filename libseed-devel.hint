@@ -1,5 +1,5 @@
 category: Gnome Interpreters
-requires: libseed-gtk3_0 libgirepository1.0-devel libglib2.0-devel libwebkitgtk3.0-devel
+requires: libseed-gtk3_0 libgirepository1.0-devel libglib2.0-devel libjavascriptcoregtk3.0_0
 external-source: seed
 sdesc: "GNOME JavaScript interpreter library (development)"
 ldesc: "Seed is a library and interpreter, dynamically bridging (through 
