@@ -1,0 +1,34 @@
+inherit gnome2
+
+NAME="seed"
+VERSION=3.2.0
+RELEASE=2
+CATEGORY="Interpreters"
+SUMMARY="GNOME JavaScript interpreter"
+DESCRIPTION="Seed is a library and interpreter, dynamically bridging (through
+GObject-Introspection) the WebKit JavaScriptCore engine with the GObject type
+system. In a more concrete sense, Seed enables you to immediately write
+applications around a significant portion of the GNOME platform, and easily
+embed JavaScript as a scripting language in your GObject library."
+HOMEPAGE="http://live.gnome.org/Seed"
+
+PATCH_URI="
+	2.91.90-no-undefined.patch
+	2.30-cygwin-compile.patch
+	2.27.92-doc-vpath.patch
+	2.31.91-g_module_build_path.patch
+"
+
+PKG_NAMES="seed libseed-gtk3_0 libseed-devel"
+seed_CONTENTS="usr/bin/seed.exe usr/share/doc/ usr/share/man/"
+libseed_gtk3_0_CATEGORY="Libs"
+libseed_gtk3_0_REQUIRES="gnome-js-common"
+libseed_gtk3_0_CONTENTS="usr/bin/cygseed-gtk3-0.dll usr/lib/seed-gtk3/ usr/share/seed-gtk3/"
+libseed_devel_CATEGORY="Libs"
+libseed_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+libseed_doc_CATEGORY="Doc"
+libseed_doc_CONTENTS="usr/share/gtk-doc/"
+
+DIFF_EXCLUDES="seed-path.h seed.pc"
+
+KEEP_LA_FILES="none"
